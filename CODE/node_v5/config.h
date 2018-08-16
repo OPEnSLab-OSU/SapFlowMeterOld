@@ -222,10 +222,10 @@
     #define probe_type    0      // 0:TDM, 1: HRM, 2:test
 		#define heatpulse     2500   // For HRM probe heat pulse ( e.g 2500(=2.5s) ) http://www.open-sensing.org/sapflowmeter-blog/2018/6/4/sap-flux-heat-calculations
 		#define is_sht31d     1      // Temperature / Humidity
-//    #define senddelay     900000 // send data every 2500(=2.5s), 60000(=1m), 300000ms(=5m), 600000ms(=10m), 900000ms(=15m)
-//    #define heatduration  240000   // Heating time 2500(=2.5s), 60000(=1m), 300000ms(=5m), 600000ms(=10m), 900000ms(=15m)
-  	#define senddelay     30000 // send data every 2500(=2.5s), 60000(=1m), 300000ms(=5m), 600000ms(=10m), 900000ms(=15m)
-  	#define heatduration  19000   // Heating time 2500(=2.5s), 60000(=1m), 300000ms(=5m), 600000ms(=10m), 900000ms(=15m)
+    #define senddelay     1800000 // send data every 2500(=2.5s), 60000(=1m), 300000ms(=5m), 600000ms(=10m), 900000ms(=15m)
+    #define heatduration  240000   // Heating time 2500(=2.5s), 60000(=1m), 300000ms(=5m), 600000ms(=10m), 900000ms(=15m)
+//  	#define senddelay     20000 // send data every 2500(=2.5s), 60000(=1m), 300000ms(=5m), 600000ms(=10m), 900000ms(=15m)
+//  	#define heatduration  10000   // Heating time 2500(=2.5s), 60000(=1m), 300000ms(=5m), 600000ms(=10m), 900000ms(=15m)
     #define is_decagon   1
 	#endif// of is_node
 #endif // of is_sapflow

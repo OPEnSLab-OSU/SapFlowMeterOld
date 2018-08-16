@@ -226,9 +226,9 @@
     #define is_sht31d     1      // Temperature / Humidity
 //    #define senddelay     900000 // send data every 2500(=2.5s), 60000(=1m), 300000ms(=5m), 600000ms(=10m), 900000ms(=15m)
 //    #define heatduration  240000   // Heating time 2500(=2.5s), 60000(=1m), 300000ms(=5m), 600000ms(=10m), 900000ms(=15m)
-    #define senddelay     30000 // send data every 2500(=2.5s), 60000(=1m), 300000ms(=5m), 600000ms(=10m), 900000ms(=15m)
-    #define heatduration  19000   // Heating time 2500(=2.5s), 60000(=1m), 300000ms(=5m), 600000ms(=10m), 900000ms(=15m)
-    #define is_decagon   1
+    #define senddelay     12000 // send data every 2500(=2.5s), 60000(=1m), 300000ms(=5m), 600000ms(=10m), 900000ms(=15m)
+    #define heatduration  10000   // Heating time 2500(=2.5s), 60000(=1m), 300000ms(=5m), 600000ms(=10m), 900000ms(=15m)
+    #define is_decagon   0
   #endif// of is_node
 #endif // of is_sapflow
 

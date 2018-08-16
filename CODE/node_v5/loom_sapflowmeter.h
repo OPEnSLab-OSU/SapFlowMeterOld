@@ -40,7 +40,7 @@ bool pulseflag = false;
 struct state_sapflow_t state_sapflow;
 uint8_t testcounter;
 
-char FileName[] = "LOG0806.CSV";
+char FileName[] = "LOG0815.CSV";
 // ================================================================ 
 // ===                   FUNCTION PROTOTYPES                    === 
 // ================================================================
