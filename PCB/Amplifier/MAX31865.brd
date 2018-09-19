@@ -172,7 +172,7 @@
 <text x="17.78" y="0.635" size="0.6096" layer="21" align="center">VCC</text>
 <text x="20.32" y="0.635" size="0.6096" layer="21" align="center">AREF</text>
 <text x="22.86" y="0.635" size="0.6096" layer="21" align="center">GND</text>
-<text x="20.193" y="5.588" size="0.6096" layer="21" align="center">GND</text>
+<text x="14.351" y="5.588" size="0.6096" layer="21" align="center">GND</text>
 <text x="25.273" y="0.635" size="0.6096" layer="21" align="center">A0</text>
 <text x="27.94" y="0.635" size="0.6096" layer="21" align="center">A1</text>
 <text x="30.48" y="0.635" size="0.6096" layer="21" align="center">A2</text>
@@ -180,18 +180,17 @@
 <text x="35.56" y="0.635" size="0.6096" layer="21" align="center">A4</text>
 <text x="38.1" y="0.635" size="0.6096" layer="21" align="center">A5</text>
 <text x="40.64" y="0.635" size="0.6096" layer="21" align="center">SCK</text>
-<text x="22.86" y="5.588" size="0.6096" layer="21" align="center">SCK</text>
+<text x="46.482" y="5.715" size="0.6096" layer="21" align="center">SCK</text>
 <text x="43.18" y="0.635" size="0.6096" layer="21" align="center">MOSI</text>
 <text x="45.72" y="0.635" size="0.6096" layer="21" align="center">MISO</text>
 <text x="48.26" y="0.635" size="0.6096" layer="21" align="center">RX</text>
 <text x="50.8" y="0.635" size="0.6096" layer="21" align="center">TX</text>
-<text x="15.113" y="5.588" size="0.6096" layer="21" align="center">Vin</text>
-<text x="17.653" y="5.588" size="0.6096" layer="21" align="center">3Vo</text>
-<text x="27.94" y="5.588" size="0.6096" layer="21" align="center">DI</text>
-<text x="25.527" y="5.588" size="0.6096" layer="21" align="center">DO</text>
-<text x="30.48" y="5.588" size="0.6096" layer="21" align="center">CS</text>
-<text x="33.02" y="5.588" size="0.6096" layer="21" align="center">FLT</text>
-<text x="35.56" y="5.715" size="0.6096" layer="21" align="center">DRDY</text>
+<text x="12.065" y="5.588" size="0.6096" layer="21" align="center">Vin</text>
+<text x="17.018" y="5.588" size="0.6096" layer="21" align="center">3Vo</text>
+<text x="24.892" y="5.588" size="0.6096" layer="21" align="center">DI</text>
+<text x="22.225" y="5.588" size="0.6096" layer="21" align="center">DO</text>
+<text x="27.432" y="5.588" size="0.6096" layer="21" align="center">CS</text>
+<text x="30.099" y="5.588" size="0.6096" layer="21" align="center">DRDY</text>
 <text x="25.4" y="24.638" size="0.6096" layer="21" align="center">BAT</text>
 <text x="27.94" y="24.638" size="0.6096" layer="21" align="center">EN</text>
 <text x="30.48" y="24.638" size="0.6096" layer="21" align="center">USB</text>
@@ -212,13 +211,20 @@
 <dimension x1="8.89" y1="-2.54" x2="34.29" y2="-2.54" x3="21.59" y3="-3.81" textsize="1.778" layer="47" unit="inch"/>
 <dimension x1="34.29" y1="-3.81" x2="59.69" y2="-3.81" x3="46.99" y3="-3.81" textsize="1.778" layer="47" unit="inch"/>
 <text x="41.91" y="15.748" size="0.6096" layer="21" align="center">CS1</text>
-<wire x1="66.04" y1="0" x2="11.43" y2="0" width="0.1524" layer="20"/>
+<wire x1="68.58" y1="0" x2="11.43" y2="0" width="0.1524" layer="20"/>
 <wire x1="72.39" y1="21.59" x2="72.39" y2="3.81" width="0.1524" layer="20"/>
 <wire x1="68.58" y1="25.4" x2="72.39" y2="21.59" width="0.1524" layer="20" curve="-90"/>
 <wire x1="72.39" y1="3.81" x2="68.58" y2="0" width="0.1524" layer="20" curve="-90"/>
-<wire x1="68.58" y1="0" x2="66.04" y2="0" width="0.1524" layer="20"/>
 <text x="64.77" y="5.08" size="1.27" layer="26" rot="MR0">A4</text>
 <text x="64.77" y="19.05" size="1.27" layer="26" rot="MR0">vcc</text>
+<text x="38.735" y="5.588" size="0.6096" layer="21" align="center">Vin</text>
+<text x="41.402" y="5.588" size="0.6096" layer="21" align="center">GND</text>
+<text x="43.942" y="5.715" size="0.6096" layer="21" align="center">3Vo</text>
+<text x="19.685" y="5.588" size="0.6096" layer="21" align="center">SCK</text>
+<text x="48.895" y="5.588" size="0.6096" layer="21" align="center">DO</text>
+<text x="51.562" y="5.588" size="0.6096" layer="21" align="center">DI</text>
+<text x="54.102" y="5.588" size="0.6096" layer="21" align="center">CS</text>
+<text x="56.769" y="5.588" size="0.6096" layer="21" align="center">DRDY</text>
 </plain>
 <libraries>
 <library name="SparkFun-Connectors">
@@ -2071,14 +2077,10 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <vertex x="11.43" y="25.4"/>
 </polygon>
 <polygon width="0.254" layer="16">
-<vertex x="8.89" y="22.86"/>
-<vertex x="8.89" y="2.54"/>
-<vertex x="11.43" y="0"/>
-<vertex x="60.96" y="-1.27"/>
-<vertex x="73.66" y="1.27"/>
-<vertex x="72.39" y="22.86"/>
-<vertex x="59.69" y="25.4"/>
-<vertex x="11.43" y="25.4"/>
+<vertex x="8.89" y="25.4"/>
+<vertex x="8.89" y="0"/>
+<vertex x="83.82" y="0"/>
+<vertex x="72.39" y="26.67"/>
 </polygon>
 <contactref element="J2" pad="2"/>
 <contactref element="J1" pad="2"/>
