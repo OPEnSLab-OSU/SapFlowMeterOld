@@ -32,7 +32,8 @@
   #define RREF      430.0
   // The 'nominal' 0-degrees-C resistance of the sensor
   // 100.0 for PT100, 1000.0 for PT1000
-  #define RNOMINAL  100.0
+  #define RNOMINAL0  101.45
+  #define RNOMINAL1  101.60 //RNOMINAL0 + 0.15(depends on RTD resistance)
 #endif// of sensor_type == 1
 // ================================================================ 
 // ===                        STRUCTURES                        === 
@@ -275,24 +276,31 @@ void measure_sapflow()
     }
   #endif //of sensor_type == 0
   #if sensor_type == 1 // RTD temperature sensor
-    uint16_t rtd0 = max0.readRTD();
-    uint16_t rtd1 = max1.readRTD();
-    float ratio0 = rtd0;
-    float ratio1 = rtd1;
-    ratio0 /= 32768;
-    ratio1 /= 32768;
+    uint16_t rtd0; 
+    uint16_t rtd1;
+    float ratio0;
+    float ratio1;
+    float approxtemp0 = 0;
+    float approxtemp1 = 0;
+    
+    for (int i=0; i <= 9; i++){
+      rtd0 = max0.readRTD();
+      rtd1 = max1.readRTD();
+      ratio0 = rtd0;
+      ratio1= rtd1;
+      ratio0 /= 32767;
+      ratio1 /= 32767;
       digitalWrite(8, HIGH);
-//      digitalWrite(10, HIGH);
-//      digitalWrite(A5, HIGH);
-//      digitalWrite(A3, LOW);///////
-
-    state_sapflow.temp0 = max0.temperature(RNOMINAL, RREF);
-//      digitalWrite(A5, LOW);///////
-
-    state_sapflow.temp1 = max1.temperature(RNOMINAL, RREF);
+      approxtemp0 += max0.temperature(RNOMINAL0, RREF);
+      approxtemp1 += max1.temperature(RNOMINAL1, RREF);
+      delay(5);
+    }
+    state_sapflow.temp0 = approxtemp0/10;
+    state_sapflow.temp1 = approxtemp1/10;
+    state_sapflow.temp_diff = state_sapflow.temp0 - state_sapflow.temp1;
     Serial.print("RTD temp values: ");
-    Serial.print(max0.temperature(RNOMINAL, RREF));Serial.print(" , ");
-    Serial.println(max1.temperature(RNOMINAL, RREF));
+    Serial.print(state_sapflow.temp0);Serial.print(" , ");
+    Serial.println(state_sapflow.temp1);
     
     // Check and print any faults
     uint8_t fault0 = max0.readFault();

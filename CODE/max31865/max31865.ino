@@ -17,21 +17,22 @@
 #include <Adafruit_MAX31865.h>
 
 // Use software SPI: CS, DI, DO, CLK
-//Adafruit_MAX31865 max0 = Adafruit_MAX31865(A0, 9, 6, 5);
-//Adafruit_MAX31865 max1 = Adafruit_MAX31865(A1, 9, 6, 5);
+Adafruit_MAX31865 max0 = Adafruit_MAX31865(A0, 9, 6, 5);
+Adafruit_MAX31865 max1 = Adafruit_MAX31865(A1, 9, 6, 5);
 
 // use hardware SPI, just pass in the CS pin
 #define PIN_SPI_MISO         (22u)
 #define PIN_SPI_MOSI         (23u)
 #define PIN_SPI_SCK          (24u)
-Adafruit_MAX31865 max0 = Adafruit_MAX31865(A3, PIN_SPI_MOSI, PIN_SPI_MISO, PIN_SPI_SCK);
-Adafruit_MAX31865 max1 = Adafruit_MAX31865(A5, PIN_SPI_MOSI, PIN_SPI_MISO, PIN_SPI_SCK);
+//Adafruit_MAX31865 max0 = Adafruit_MAX31865(A3, PIN_SPI_MOSI, PIN_SPI_MISO, PIN_SPI_SCK);
+//Adafruit_MAX31865 max1 = Adafruit_MAX31865(A5, PIN_SPI_MOSI, PIN_SPI_MISO, PIN_SPI_SCK);
 
 // The value of the Rref resistor. Use 430.0 for PT100 and 4300.0 for PT1000
 #define RREF      430.0
 // The 'nominal' 0-degrees-C resistance of the sensor
 // 100.0 for PT100, 1000.0 for PT1000
-#define RNOMINAL  100.0
+#define RNOMINAL0  100.0
+#define RNOMINAL1  100.16
 
 void setup() {
   Serial.begin(9600);
@@ -56,7 +57,7 @@ void loop() {
   
   Serial.print("Ratio = "); Serial.println(ratio0,8);
   Serial.print("Resistance = "); Serial.println(RREF*ratio0,8);
-  Serial.print("Temperature = "); Serial.println(max0.temperature(RNOMINAL, RREF));
+  Serial.print("Temperature = "); Serial.println(max0.temperature(RNOMINAL0, RREF));
 
   // Check and print any faults
   uint8_t fault0 = max0.readFault();
@@ -91,7 +92,7 @@ void loop() {
   ratio1 /= 32768;
   Serial.print("Ratio = "); Serial.println(ratio1,8);
   Serial.print("Resistance = "); Serial.println(RREF*ratio1,8);
-  Serial.print("Temperature = "); Serial.println(max1.temperature(RNOMINAL, RREF));
+  Serial.print("Temperature = "); Serial.println(max1.temperature(RNOMINAL1, RREF));
 
   // Check and print any faults
   uint8_t fault1 = max1.readFault();
