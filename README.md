@@ -28,12 +28,15 @@ WiFi and LoRa have had the most attention in development and thus have the most 
 | **LoRa**       | **LoRa**                    | Implemented                                                  |                       
 | Ethernet       | Ethernet*                   | Currently only used with hubs, expansion in progress         |
 | GSM            | GSM*                        | Currently only one device, so outputs MQTT via GSM, but no GSM receiving yet |
-| Google Sheets? | Google Sheets (PushingBox)* | Works as output, looking for ways of improving the pipline   |
-| SD card?       | **SD card**                 | Works as output, considering as input                        |
-| Serial?        | **Serial**                  | Works for output. Serial as input may or may not be useful (is how Fona is tested) |
+| Google Sheets  | Google Sheets (PushingBox)* | Works as output, looking for ways of improving the pipline   |
+| SD card        | **SD card**                 | Works as output, considering as input                        |
+| Serial         | **Serial**                  | Works for output. Serial as input may or may not be useful (is how Fona is tested) |
 
 ## Device Configuration
 
 The configuration of the code to upload and flash to devices is set in the config.h file. This file presents the options that can be set or toggled to achieve a particular behavior. The preprocessor uses these definitions to select the necessary declarations, variables, and functions automatically. 
 
 Currently changes to the config need to be done manually in the file itself.
+
+### Setting Sap flow meter devices
+
