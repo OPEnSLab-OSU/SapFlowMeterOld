@@ -9,10 +9,9 @@ This is the primary location of the Sap Flow Meter project code, which is a modi
 3. [Communication Platforms](#communication-platforms)
 4. [Device Configuration](#device-configuration)
 	1. [Configuration File](#Configuration-File)
-		1. [Enable sap flow meter](#Enable-sap-flow-meter)
-		2. [Manipulate Options](#Manipulate-Options)
-			1.[HUB options](#HUB-options)
-			2.[NODE options](#NODE-options)
+		1.[Enable sap flow meter](#Enable-sap-flow-meter)
+		2.[HUB options](#HUB-options)
+		3.[NODE options](#NODE-options)
 		
 
 ## Installation
@@ -44,11 +43,9 @@ The configuration of the code to upload and flash to devices is set in the confi
 
 Currently changes to the config need to be done manually in the file itself.
 
-### Configuration File
-
 The configuration file is used in conjunction with preprocessor statements to essentially built the specificed sketch. Any options that can be set or toggled, or any specification of hardware (e.g. relay switch for HRM, and analog sensor for NTC thermistors) being used occur in (and only in) this config.h.
 
-#### Enable sap flow meter
+### Enable sap flow meter
 
 Firstly, it is necessry to toggle "is_sapflow"
 
@@ -60,11 +57,11 @@ Firstly, it is necessry to toggle "is_sapflow"
 #define is_evaporimeter 0
 ```
 
-#### Manipulate options
+### Manipulate options
 
 Set ether HUB or Node(probe meter)
 
-##### HUB options
+### HUB options
 - Set hub_node_type to be 0
 - Set CHANNEL to be 1 - 8
 - Set is_lora to be 1 if you want to communicate to receive data from node through LoRa. Default is 1.
@@ -106,7 +103,7 @@ Set ether HUB or Node(probe meter)
   .
   .
   ```
-##### NODE options
+### NODE options
 - Set hub_node_type to be 1
 - Set probe_type to be 0 if you want TDM, or 1 if you want HRM
 - Set sensor_type to be 0 if you want NTC thermister, 1 if you want RTD sensor. There will be more options for other sensors(eg. k type thermometer)
