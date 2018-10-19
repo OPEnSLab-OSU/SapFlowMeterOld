@@ -8,6 +8,12 @@ This is the primary location of the Sap Flow Meter project code, which is a modi
 2. [Device Support](#device-support)
 3. [Communication Platforms](#communication-platforms)
 4. [Device Configuration](#device-configuration)
+	1. [Configuration File](#Configuration-File)
+		1. [Enable sap flow meter](#Enable-sap-flow-meter)
+		2. [Manipulate Options](#Manipulate-Options)
+			1.[HUB options](#HUB-options)
+			2.[NODE options](#NODE-options)
+		
 
 ## Installation
 
@@ -100,7 +106,7 @@ Set ether HUB or Node(probe meter)
   .
   .
   ```
-##### NODE(sap flow meter) options
+##### NODE options
 - Set hub_node_type to be 1
 - Set probe_type to be 0 if you want TDM, or 1 if you want HRM
 - Set sensor_type to be 0 if you want NTC thermister, 1 if you want RTD sensor. There will be more options for other sensors(eg. k type thermometer)
