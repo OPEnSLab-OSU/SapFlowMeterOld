@@ -8,10 +8,9 @@ This is the primary location of the Sap Flow Meter project code, which is a modi
 2. [Device Support](#device-support)
 3. [Communication Platforms](#communication-platforms)
 4. [Device Configuration](#device-configuration)
-	1. [Configuration File](#Configuration-File)
-		1.[Enable sap flow meter](#Enable-sap-flow-meter)
-		2.[HUB options](#HUB-options)
-		3.[NODE options](#NODE-options)
+	1.[Enable sap flow meter](#Enable-sap-flow-meter)
+	2.[HUB options](#HUB-options)
+	3.[NODE options](#NODE-options)
 		
 
 ## Installation
