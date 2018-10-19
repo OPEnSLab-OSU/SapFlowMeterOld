@@ -31,8 +31,8 @@ Adafruit_MAX31865 max1 = Adafruit_MAX31865(A1, 9, 6, 5);
 #define RREF      430.0
 // The 'nominal' 0-degrees-C resistance of the sensor
 // 100.0 for PT100, 1000.0 for PT1000
-#define RNOMINAL0  100.0
-#define RNOMINAL1  100.16
+#define RNOMINAL0  101.45
+#define RNOMINAL1  101.60
 
 void setup() {
   Serial.begin(9600);
