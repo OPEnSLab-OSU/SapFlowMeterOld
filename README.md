@@ -103,9 +103,10 @@ Set ether HUB or Node(probe meter)
   .
   ```
 ### NODE options
+
 - Set hub_node_type to be 1
-- Set probe_type to be 0 if you want TDM, or 1 if you want HRM
-- Set sensor_type to be 0 if you want NTC thermister, 1 if you want RTD sensor. There will be more options for other sensors(eg. k type thermometer)
+- Set probe_type to be 0: TDM or 1:HRM
+- Set sensor_type to be 0: NTC thermister or 1: RTD sensor. There will be more options for other sensors(eg. k type thermometer) later.
 - Set CHANNEL to be 1 - 8
 - Set is_lora to be 1 if you want to communicate to send data to HUB through LoRa. Default is 1.
 - Set is_rtc to be 1 if you want to log timestamp
