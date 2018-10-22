@@ -2,7 +2,7 @@
 //  #if is_sapflow == 1
 //    run_sapflowmeter(&send_bndl);
 //  #endif
-// ---------- ----------------------  
+// --------------------------------------  
 // ================================================================
 // ===                        LIBRARIES                         ===
 // ================================================================
@@ -14,26 +14,31 @@
 #define HEATPIN 12
 
 #if sensor_type == 1  //0: NTC, 1: RTD
-  #define PIN_SPI_CS0           A3
-  #define PIN_SPI_CS1           A5
-  
-  // Use software SPI: CS, DI, DO, CLK
-  Adafruit_MAX31865 max0 = Adafruit_MAX31865(A0, 9, 6, 5);
-  Adafruit_MAX31865 max1 = Adafruit_MAX31865(A1, 9, 6, 5);
-  
-  // use hardware SPI, just pass in the CS pin
-  #define PIN_SPI_MISO         (22u)
-  #define PIN_SPI_MOSI         (23u)
-  #define PIN_SPI_SCK          (24u)
-//  Adafruit_MAX31865 max0 = Adafruit_MAX31865(A3, PIN_SPI_MOSI, PIN_SPI_MISO, PIN_SPI_SCK);
-//  Adafruit_MAX31865 max1 = Adafruit_MAX31865(A5, PIN_SPI_MOSI, PIN_SPI_MISO, PIN_SPI_SCK);
-  
+// Use software SPI: CS, DI, DO, CLK
+    #define PIN_SPI_CS0           A0
+    #define PIN_SPI_CS1           A1
+    #define PIN_SPI_MISO          6
+    #define PIN_SPI_MOSI          9
+    #define PIN_SPI_SCK           5
+
+
+//   Use hardware SPI, just pass in the CS pin
+//  #define PIN_SPI_CS0           A3
+//  #define PIN_SPI_CS1           A5
+//  #define PIN_SPI_MISO         (22u)
+//  #define PIN_SPI_MOSI         (23u)
+//  #define PIN_SPI_SCK          (24u)
+
+  Adafruit_MAX31865 max0 = Adafruit_MAX31865(PIN_SPI_CS0, PIN_SPI_MOSI, PIN_SPI_MISO, PIN_SPI_SCK);
+  Adafruit_MAX31865 max1 = Adafruit_MAX31865(PIN_SPI_CS1, PIN_SPI_MOSI, PIN_SPI_MISO, PIN_SPI_SCK);
+
   // The value of the Rref resistor. Use 430.0 for PT100 and 4300.0 for PT1000
   #define RREF      430.0
   // The 'nominal' 0-degrees-C resistance of the sensor
   // 100.0 for PT100, 1000.0 for PT1000
   #define RNOMINAL0  101.45
   #define RNOMINAL1  101.60 //RNOMINAL0 + 0.15(depends on RTD resistance)
+
 #endif// of sensor_type == 1
 // ================================================================ 
 // ===                        STRUCTURES                        === 
@@ -70,8 +75,11 @@ void package_sapflow(OSCBundle *bndl, char packet_header_string[]);
 void measure_sapflow();
 double voltTotemp(double vout);
 void heat();
+void testsenddata();
 void senddata();
 #endif
+void setup_sapflow();
+void measure_sapflow();
 void run_sapflowmeter(OSCBundle *bndl);
 
 // ================================================================ 
@@ -84,15 +92,15 @@ void run_sapflowmeter(OSCBundle *bndl);
 //
 void setup_sapflow() 
 {
-  digitalWrite(8, HIGH);
+  digitalWrite(8, HIGH);			//For using both LoRa and SD card
 
 //  pinMode(A3, INPUT_PULLUP); 
 //  pinMode(A5, INPUT_PULLUP);  
   
   #if hub_node_type == 1 //NODE
-    setup_sht31d();
-//    sd_delete_file(FileName);
-    pinMode(HEATPIN,OUTPUT);
+    setup_sht31d();					//setup Ambient temperature
+//    sd_delete_file(FileName);		//Delete csv file
+    pinMode(HEATPIN,OUTPUT);		//setup heater resistor
     lastUpdate = millis();
     startMillis = millis();
     lastPulseUpdate = millis();
@@ -238,6 +246,7 @@ void heat()
 
 }
 
+// Packaging function
 void package_sapflow(OSCBundle *bndl, char packet_header_string[]) 
 {
   char addressString[255];
@@ -275,6 +284,7 @@ void measure_sapflow()
       state_sapflow.temp_diff *= -1;
     }
   #endif //of sensor_type == 0
+
   #if sensor_type == 1 // RTD temperature sensor
     uint16_t rtd0; 
     uint16_t rtd1;
@@ -283,7 +293,7 @@ void measure_sapflow()
     float approxtemp0 = 0;
     float approxtemp1 = 0;
     
-    for (int i=0; i <= 9; i++){
+    for (int i=0; i <= 9; i++){ //Measure temperature for 10 times
       rtd0 = max0.readRTD();
       rtd1 = max1.readRTD();
       ratio0 = rtd0;
@@ -295,12 +305,12 @@ void measure_sapflow()
       approxtemp1 += max1.temperature(RNOMINAL1, RREF);
       delay(5);
     }
-    state_sapflow.temp0 = approxtemp0/10;
-    state_sapflow.temp1 = approxtemp1/10;
+    state_sapflow.temp0 = approxtemp0/10;	//Average 10 temperature data
+    state_sapflow.temp1 = approxtemp1/10;	//Average 10 temperature data
     state_sapflow.temp_diff = state_sapflow.temp0 - state_sapflow.temp1;
-    Serial.print("RTD temp values: ");
-    Serial.print(state_sapflow.temp0);Serial.print(" , ");
-    Serial.println(state_sapflow.temp1);
+    // Serial.print("RTD temp values: ");
+    // Serial.print(state_sapflow.temp0);Serial.print(" , ");
+    // Serial.println(state_sapflow.temp1);
     
     // Check and print any faults
     uint8_t fault0 = max0.readFault();
@@ -361,7 +371,7 @@ void run_sapflowmeter(OSCBundle *bndl)
     #if hub_node_type == 0 // HUB
     // Receive bundles, takes bundle to be filled and wireless platforms [WIFI, LORA, NRF]
       //receive_bundle(bndl, LORA);
-      lora_receive_bundle(bndl);
+      lora_receive_bundle(bndl);		//receive bundle through LoRa
       
       if (bundle_empty(bndl)) return;
 
