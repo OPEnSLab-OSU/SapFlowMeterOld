@@ -11,16 +11,16 @@ This is the primary location of the Sap Flow Meter project code, which is a modi
 3. [Contribution and Acknowledgements](#Contribution and Acknowledgements)
 
 ---
-#Introduction
+# Introduction
 
 ---
-#Instructions
+# Instructions
 
-##Assembly
+## Assembly
 
-##Wiring
+## Wiring
 
-##Instalation
+## Instalation
 
 ---
-#Contribution and Acknowledgements
+# Contribution and Acknowledgements
