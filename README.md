@@ -8,7 +8,8 @@ This is the primary location of the Sap Flow Meter project code, which is a modi
 	1. [Assembly](#Assembly)
 	2. [Wiring](#Wiring)
 	3. [Installation](#Installation)
-3. [Contribution and Acknowledgements](#Contribution and Acknowledgements)
+3. [Contribution](#Contribution)
+4. [Acknowledgements](#Acknowledgements)
 
 ---
 # Introduction
@@ -30,5 +31,8 @@ Connect everything as shown
 How to put it in a tree
 
 ---
-# Contribution and Acknowledgements
+# Contribution
 Special thanks to...
+
+---
+# Acknowledgements
