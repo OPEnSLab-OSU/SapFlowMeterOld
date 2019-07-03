@@ -7,7 +7,7 @@ This is the primary location of the Sap Flow Meter project code, which is a modi
 2. [Instructions](#Instructions)
 	1. [Assembly](#Assembly)
 	2. [Wiring](#Wiring)
-	3. [Installation](#Instalation)
+	3. [Installation](#Installation)
 3. [Contribution and Acknowledgements](#Contribution and Acknowledgements)
 
 ---
@@ -17,10 +17,18 @@ This is the primary location of the Sap Flow Meter project code, which is a modi
 # Instructions
 
 ## Assembly
+Solder all the suff together
+pictures
+pictures pictures
+Solder all the stuff together
+A bit more
 
 ## Wiring
+Connect everything as shown
 
-## Instalation
+## Installation
+How to put it in a tree
 
 ---
 # Contribution and Acknowledgements
+Special thanks to...
